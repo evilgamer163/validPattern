@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Valid form</title>
+</head>
+<body>
+    <form id="myForm">
+        <label for="email">Email</label>
+        <input type="text" name="" id="email" placeholder="email">
+
+        <label for="phone">Number</label>
+        <input type="text" name="" id="phone" placeholder="phone">
+
+        <button type="submit">submit</button>
+        <button type="reset">reset</button>
+    </form>
+
+    <script src="./plugins/validator/validator.js"></script>
+    <script>
+        const valid = new Validator({
+            selector: '#myForm',
+            pattern: {
+                zip: /^$/
+            },
+            method: {
+                'email': [
+                    ['notEmpty'],
+                    ['pattern', 'email']
+                ],
+                'phone': [
+                    ['notEmpty'],
+                    ['pattern', 'phone']
+                ]
+            }
+        });
+
+        valid.init();
+    </script>
+</body>
+</html>
